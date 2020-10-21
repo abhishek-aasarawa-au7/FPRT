@@ -5,7 +5,7 @@ const AboutUsRoute = [
   {
     path: create,
     exact: true,
-    isProtected: false,
+    isProtected: true,
     component: NewForm,
   },
 ];

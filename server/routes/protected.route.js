@@ -26,4 +26,7 @@ route.post("/create", formController.new);
 // for getting responses
 route.post("/responses", userController.getResponses);
 
+// user forms
+route.get("/forms", userController.getForms);
+
 export default route;

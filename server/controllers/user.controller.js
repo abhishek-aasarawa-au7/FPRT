@@ -105,4 +105,12 @@ controller.getResponses = catchError(async (req, res, next) => {
   response(res, form.responses, "Responses fetched successfully", false, 200);
 });
 
+controller.getForms = catchError(async (req, res, next) => {
+  let id = req.user._id;
+
+  let user = await userModel.findById(id).populate("forms").exec();
+
+  response(res, user.forms, "Forms fetched successfully", false, 200);
+});
+
 export default controller;
