@@ -57,6 +57,8 @@ controller.profile = catchError(async (req, res, next) => {
   if (!isEmpty(req.fields)) {
     let { name, email, password } = req.fields;
 
+    if (password.length < 21) password = await bcrypt.hash(password, 5);
+
     user = await userModel.findByIdAndUpdate(
       req.user._id,
       { $set: { name, email, password } },
