@@ -13,7 +13,7 @@ import MainStructure from "./MainStructure";
 import { PublicRoute, PrivateRoute } from "./client/components/routeManagments";
 
 // routes
-// import routes from "./client/routes";
+import routes from "./client/routes";
 import { SET_USER } from "./client/redux/actions/user.action";
 
 function App({ setUserData }) {
@@ -32,17 +32,16 @@ function App({ setUserData }) {
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="xl">
-        <MainStructure>
-          {/* <Switch>
-            {map(routes, (route, idx) => {
-              return !!route.isProtected ? (
-                <PrivateRoute {...route} key={idx} />
-              ) : (
-                <PublicRoute {...route} key={idx} />
-              );
-            })}
-          </Switch> */}
-        </MainStructure>
+        <MainStructure />
+        <Switch>
+          {map(routes, (route, idx) => {
+            return !!route.isProtected ? (
+              <PrivateRoute {...route} key={idx} />
+            ) : (
+              <PublicRoute {...route} key={idx} />
+            );
+          })}
+        </Switch>
       </Container>
     </ThemeProvider>
   );

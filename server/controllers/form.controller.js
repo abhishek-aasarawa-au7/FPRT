@@ -13,6 +13,7 @@ const controller = {};
 controller.new = catchError(async (req, res, next) => {
   let form = new formModel({
     author: req.user._id,
+    title: req.body.title,
     fields: req.body.fields,
   });
 
@@ -25,7 +26,7 @@ controller.new = catchError(async (req, res, next) => {
   await req.user.save();
 
   // for user to use
-  let access_link = `${app_url}/form/${form._id}`;
+  let access_link = `${app_url}form/${form._id}`;
 
   response(res, access_link, "form created successfully", false, 200);
 });

@@ -15,6 +15,10 @@ const form = new formSchema(
       type: String,
       required: true,
     },
+    title: {
+      type: String,
+      required: true,
+    },
     responses: [
       {
         type: String,
