@@ -3,10 +3,10 @@ import { createMuiTheme } from "@material-ui/core/styles";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#07335b",
+      main: "#512A2A",
     },
     secondary: {
-      main: "#ecf5fe",
+      main: "#F7E5C9",
     },
   },
 });

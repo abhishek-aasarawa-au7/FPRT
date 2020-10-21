@@ -62,6 +62,21 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  wrapper: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  items: {
+    margin: "0 10px",
+  },
+  submit: {
+    margin: theme.spacing(1.5, 0, 2, 3),
+    color: theme.palette.primary.main,
+    backgroundColor: theme.palette.secondary.main,
+    "&:hover": {
+      color: theme.palette.secondary.main,
+    },
+  },
 }));
 
 export default useStyles;

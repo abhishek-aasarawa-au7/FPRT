@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
@@ -22,6 +22,7 @@ import {
   signout,
   profile,
 } from "../../redux/actions/sign.action";
+import { Button } from "@material-ui/core";
 
 const NavBar = (props) => {
   const {
@@ -57,16 +58,29 @@ const NavBar = (props) => {
   };
 
   const toggleModal = (event) => {
-    if (event.target.innerText === "Sign-In") {
+    console.log(event.target.innerText);
+    if (
+      event.target.innerText === "Sign-In" ||
+      event.target.innerText === "SIGN IN"
+    ) {
       toggleSignIn();
     }
-    if (event.target.innerText === "Sign-Up") {
+    if (
+      event.target.innerText === "Sign-Up" ||
+      event.target.innerText === "SIGN UP"
+    ) {
       toggleSignUp();
     }
-    if (event.target.innerText === "Sign-Out") {
+    if (
+      event.target.innerText === "Sign-Out" ||
+      event.target.innerText === "SIGN OUT"
+    ) {
       toggleSignOut();
     }
-    if (event.target.innerText === "Profile") {
+    if (
+      event.target.innerText === "Profile" ||
+      event.target.innerText === "PROFILE"
+    ) {
       toggleProfile();
     }
     handleMenuClose();
@@ -145,14 +159,79 @@ const NavBar = (props) => {
         <Toolbar>
           {/*logo*/}
           <Link to="/" style={{ textDecoration: "none" }}>
-            <Typography
-              color="secondary"
-              className={classes.title}
-              variant="h6"
-              noWrap
-            >
-              FPRT - Test
-            </Typography>
+            <div className={classes.wrapper}>
+              <div className={classes.items}>
+                <Typography
+                  color="secondary"
+                  className={classes.title}
+                  variant="h6"
+                  noWrap
+                >
+                  MERN
+                </Typography>
+              </div>
+              <div className={classes.items}>
+                <Typography
+                  color="secondary"
+                  className={classes.title}
+                  variant="h6"
+                  noWrap
+                >
+                  {" "}
+                  -{" "}
+                </Typography>
+              </div>
+              <div className={classes.items}>
+                <Typography
+                  color="secondary"
+                  className={classes.title}
+                  variant="h6"
+                  noWrap
+                >
+                  F
+                </Typography>
+              </div>
+              <div className={classes.items}>
+                <Typography
+                  color="secondary"
+                  className={classes.title}
+                  variant="h6"
+                  noWrap
+                >
+                  O
+                </Typography>
+              </div>
+              <div className={classes.items}>
+                <Typography
+                  color="secondary"
+                  className={classes.title}
+                  variant="h6"
+                  noWrap
+                >
+                  R
+                </Typography>
+              </div>
+              <div className={classes.items}>
+                <Typography
+                  color="secondary"
+                  className={classes.title}
+                  variant="h6"
+                  noWrap
+                >
+                  M
+                </Typography>
+              </div>
+              <div className={classes.items}>
+                <Typography
+                  color="secondary"
+                  className={classes.title}
+                  variant="h6"
+                  noWrap
+                >
+                  S
+                </Typography>
+              </div>
+            </div>
           </Link>
 
           {/*space*/}
@@ -169,13 +248,64 @@ const NavBar = (props) => {
 
           {/*profile icon*/}
           <div className={classes.sectionDesktop}>
-            <IconButton
+            {/* <IconButton
               edge="end"
               onClick={handleProfileMenuOpen}
               color="secondary"
             >
               <AccountCircle />
-            </IconButton>
+            </IconButton> */}
+            {!isLogin ? (
+              <Fragment>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  name="signin"
+                  key="signin"
+                  onClick={toggleModal}
+                >
+                  Sign In
+                </Button>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  name="signup"
+                  key="signup"
+                  onClick={toggleModal}
+                >
+                  Sign Up
+                </Button>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  name="profile"
+                  key="profile"
+                  onClick={toggleModal}
+                >
+                  Profile
+                </Button>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  name="signout"
+                  key="signout"
+                  onClick={toggleModal}
+                >
+                  Sign Out
+                </Button>
+              </Fragment>
+            )}
           </div>
 
           {/*profile icon mobile version*/}
