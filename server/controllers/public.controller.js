@@ -10,7 +10,6 @@ export default {
   search: catchError(async (req, res, next) => {
     let id = req.params.id;
     let form = await formModel.findById(id).populate("author", "name").exec();
-
     // if not found
     if (!form)
       return response(
@@ -26,7 +25,7 @@ export default {
 
   // for saving response
   saveResponse: catchError(async (req, res, next) => {
-    let { id, response } = req.body;
+    let { id, resp } = req.body;
 
     // find form
     let form = await formModel.findById(id);
@@ -35,7 +34,7 @@ export default {
     if (!form)
       return response(res, [], "form not found. Please check link", true, 404);
 
-    form.responses.push(response);
+    form.responses.push(resp);
 
     await form.save();
 

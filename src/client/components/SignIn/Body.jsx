@@ -11,6 +11,7 @@ import Container from "@material-ui/core/Container";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 
 // axios
 import httpRequest from "../../config/axios.config";
@@ -29,7 +30,13 @@ import { setUserData } from "../../utils/storageData";
 import homeUrl from "../../config/url";
 
 //  signin component -----------------------------------------------
-const SignIn = ({ toggleSignUp, toggleSignIn, setNotification, setUser }) => {
+const SignIn = ({
+  toggleSignUp,
+  toggleSignIn,
+  setNotification,
+  setUser,
+  history,
+}) => {
   const classes = useStyles();
 
   const formik = useFormik({
@@ -76,6 +83,8 @@ const SignIn = ({ toggleSignUp, toggleSignIn, setNotification, setUser }) => {
 
       // switching to user home
       toggleSignIn();
+
+      if (history.location.pathname !== "/form") history.push("/all");
     } catch (err) {
       if (!!err.response) {
         setNotification({
@@ -181,4 +190,4 @@ const mapActionToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapActionToProps)(SignIn);
+export default connect(null, mapActionToProps)(withRouter(SignIn));

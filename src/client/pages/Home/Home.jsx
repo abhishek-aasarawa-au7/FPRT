@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Typography from "@material-ui/core/Typography";
 
 // import style
 import useStyles from "./home.style";
 import { Grid } from "@material-ui/core";
 
-const Home = () => {
+const Home = ({ history }) => {
   const classes = useStyles();
+
+  useEffect(() => {
+    // checking for token
+    if (!!localStorage.getItem("token")) {
+      history.push("/all");
+    }
+  }, [history]);
 
   return (
     <Grid container alignItems="center" justify="center">

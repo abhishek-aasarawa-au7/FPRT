@@ -8,7 +8,7 @@ import publicController from "../controllers/public.controller";
 let route = express.Router();
 
 // for fetching form from link
-route.get("/search", publicController.search);
+route.get("/search/:id", publicController.search);
 
 // for saving response
 route.post("/save", publicController.saveResponse);
