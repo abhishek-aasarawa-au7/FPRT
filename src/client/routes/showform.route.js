@@ -5,7 +5,7 @@ const ShowFormRoute = [
   {
     path: form,
     exact: true,
-    isProtected: true,
+    isProtected: false,
     component: ShowForm,
   },
 ];
