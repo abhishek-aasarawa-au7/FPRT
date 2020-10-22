@@ -102,7 +102,13 @@ controller.getResponses = catchError(async (req, res, next) => {
   // if not found
   if (!form) return response(res, [], "Sorry! form is not found.", true, 404);
 
-  response(res, form.responses, "Responses fetched successfully", false, 200);
+  response(
+    res,
+    { resp: form.responses, ques: form.fields },
+    "Responses fetched successfully",
+    false,
+    200
+  );
 });
 
 controller.getForms = catchError(async (req, res, next) => {

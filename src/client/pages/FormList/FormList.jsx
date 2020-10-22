@@ -8,7 +8,6 @@ import {
   Typography,
   Grid,
   useTheme,
-  Button,
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import httpRequest from "../../config/axios.config";
@@ -52,11 +51,6 @@ const FormList = ({ setNotification, history }) => {
     getForms();
   }, [getForms]);
 
-  const onClickHandler = (e) => {
-    // changing route
-    history.push("/create");
-  };
-
   return (
     <Fragment>
       <Grid container className={classes.notebook}>
@@ -78,6 +72,7 @@ const FormList = ({ setNotification, history }) => {
               marginRight={2}
               my={5}
               className={classes.list_container}
+              onClick={() => history.push("/create")}
             >
               <Card className={classes.root} variant="outlined">
                 <CardContent
@@ -86,20 +81,12 @@ const FormList = ({ setNotification, history }) => {
                     padding: "30px",
                   }}
                 >
-                  <Button
-                    type="button"
-                    width="50%"
-                    variant="outlined"
-                    color="secondary"
+                  <AddIcon
                     style={{
                       fontSize: "100",
                       color: theme.palette.secondary.main,
-                      marginTop: "30px",
                     }}
-                    onClick={() => history.push("/create")}
-                  >
-                    ADD
-                  </Button>
+                  />
                 </CardContent>
               </Card>
             </Box>
@@ -113,7 +100,7 @@ const FormList = ({ setNotification, history }) => {
                   marginRight={2}
                   my={5}
                   className={classes.list_container}
-                  onClick={onClickHandler}
+                  onClick={() => history.push(`/response?${item._id}`)}
                 >
                   <Card className={classes.root} variant="outlined">
                     <CardContent>
